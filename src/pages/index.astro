@@ -1,16 +1,179 @@
 ---
+import Base from '../layouts/Base.astro';
+
+const phone = '+57 311 239 1524';
+const tel = 'tel:+573112391524';
+const whatsapp = 'https://wa.me/573112391524';
+
+const stats = [
+  { value: '30', label: 'años' },
+  { value: '24 h', label: 'urgencias' },
+  { value: 'Sí', label: 'garantía' },
+];
+
+const services = [
+  { title: 'Instalaciones nuevas', detail: 'Casas, locales y fincas' },
+  { title: 'Arreglo de daños', detail: 'Cortos, apagones, breakers que saltan' },
+  { title: 'Tomas e interruptores', detail: 'Cambio y puesta de nuevos' },
+  { title: 'Lámparas y ventiladores', detail: 'Instalo y reviso' },
+  { title: 'Revisión de la casa', detail: 'Para evitar incendios y cobros altos de luz' },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base
+  title="Jaime Bohorquéz — Electricista en Villanueva, Casanare"
+  description={`Electricista de confianza a domicilio en Villanueva, Casanare. Urgencias 24 horas. ${phone}`}
+>
+  <div class="page">
+    <main>
+      <header class="hero">
+        <div class="hero-kicker">Electricista · Villanueva, Casanare</div>
+        <h1>Jaime<br />Bohorquéz</h1>
+        <p>Electricista de confianza a domicilio: Llámeme y voy hasta su puerta.</p>
+      </header>
+
+      <section class="section photo-section">
+        <div class="blueprint duotone photo">
+          <!-- TODO: reemplazar por la foto real de Jaime (public/ o src/assets/) -->
+          <span class="photo-placeholder">Foto de Jaime con su herramienta</span>
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="kicker">Quién soy</div>
+        <p class="lead">Electricista de Villanueva con 30 años de trabajo. Me conocen en el barrio por cumplir la hora y dejar todo limpio.</p>
+        <div class="stats">
+          {stats.map((s) => (
+            <div class="stat">
+              <div class="stat-value">{s.value}</div>
+              <div class="stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="section section-lg">
+        <div class="kicker">Servicios</div>
+        <ul class="blueprint services">
+          {services.map((s) => (
+            <li>
+              <span class="service-title">{s.title}</span>
+              <span class="service-detail">{s.detail}</span>
+            </li>
+          ))}
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        </ul>
+      </section>
+
+      <section class="section section-lg contact">
+        <div class="kicker">Contacto</div>
+        <div class="contact-phone"><a href={tel}>{phone}</a></div>
+        <a class="btn btn-secondary call" href={tel}>Llamar ahora</a>
+        <p>Villanueva y veredas cercanas.<br />Urgencias las 24 horas.</p>
+      </section>
+    </main>
+
+    <div class="sticky-cta">
+      <a class="btn btn-primary blueprint" href={whatsapp} target="_blank" rel="noopener">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
+        Escribirle a Jaime por WhatsApp
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </a>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: 480px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+  }
+  main { flex: 1; }
+
+  .hero {
+    background: var(--color-accent-900);
+    color: var(--color-bg);
+    padding: 28px 20px;
+  }
+  .hero-kicker {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .hero h1 {
+    margin: 14px 0 0;
+    font-size: 64px;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+  .hero p { margin: 16px 0 0; font-size: 19px; line-height: 1.4; }
+
+  .section { padding: 32px 20px 0; }
+  .section-lg { padding-top: 36px; }
+  .photo-section { padding-top: 28px; }
+
+  .photo {
+    height: 220px;
+    display: grid;
+    place-items: center;
+    background: var(--color-neutral-200);
+  }
+  .photo-placeholder { color: var(--color-accent-700); font-size: 14px; }
+
+  .lead { margin: 12px 0 0; font-size: 19px; line-height: 1.45; }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: 1px solid var(--color-divider);
+    margin-top: 18px;
+  }
+  .stat { padding: 12px; text-align: center; }
+  .stat + .stat { border-left: 1px solid var(--color-divider); }
+  .stat-value {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1;
+  }
+  .stat-label { font-size: 14px; }
+
+  .services { list-style: none; margin: 14px 0 0; padding: 0; }
+  .services li { padding: 14px 16px; border-top: 1px solid var(--color-divider); }
+  .service-title {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 22px;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+  .service-detail { display: block; font-size: 16px; margin-top: 2px; }
+
+  .contact { padding-bottom: 40px; }
+  .contact-phone {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1;
+    margin-top: 12px;
+  }
+  .contact-phone a { color: inherit; text-decoration: none; }
+  .call { min-height: 56px; font-size: 19px; margin-top: 14px; }
+  .contact p { margin: 16px 0 0; font-size: 17px; line-height: 1.5; }
+
+  .sticky-cta {
+    position: sticky;
+    bottom: 0;
+    padding: 12px 20px 18px;
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-divider);
+  }
+  .sticky-cta .btn { min-height: 60px; font-size: 20px; gap: 10px; }
+</style>
