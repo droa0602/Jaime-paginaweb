@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project state
 
-Static Astro 7 site for Jaime Bohorquéz, an electrician in Villanueva, Casanare (site content is in Spanish). It is currently a single mobile-first landing page. There are no integrations, UI frameworks, linter or test suite. Requires Node >= 22.23.4.
+Static Astro 7 site for Jaime Bohórquez, an electrician in Villanueva, Casanare (site content is in Spanish). It is currently a single mobile-first landing page. There are no integrations, UI frameworks, linter or test suite. Requires Node >= 22.23.4.
 
 ## Commands
 
