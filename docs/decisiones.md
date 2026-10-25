@@ -10,7 +10,7 @@ Por qué elegí X y no Y (colores, estructura, herramientas).
 -->
 
 ## 2026-10-25 — Paso del diseño HTML a Astro
-**Elegí:** extraer el HTML y los recursos del archivo exportado (`Jaime Bohorquez.html`) y reescribirlo como `src/pages/index.astro` + `src/layouts/Base.astro` + `src/styles/global.css`.
+**Elegí:** extraer el HTML y los recursos del archivo exportado (`docs/referencias/Jaime Bohorquez.html`) y reescribirlo como `src/pages/index.astro` + `src/layouts/Base.astro` + `src/styles/global.css`.
 **En vez de:** usar el archivo exportado tal cual.
 **Por qué:** el archivo exportado necesita JavaScript para "desempaquetarse" (pesa ~370 KB y la página no se ve sin JS). En Astro sale HTML estático, rápido en celulares con mala señal.
 
