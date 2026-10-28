@@ -26,3 +26,4 @@ Una nota corta al cerrar cada sesión.
 - Recuadro de experiencia rediseñado: 30 años de oficio en grande, y "De lunes a domingo" y "Trabajo con garantía" debajo.
 - Botón flotante de WhatsApp en #798da6 con letra azul oscuro; su borde y la franja de la barra del celular en #132841.
 - La frase bajo el recuadro de experiencia quedó alineada con su texto. Descripciones de servicios con punto final.
+- Configuré la publicación en GitHub Pages (workflow en .github/workflows/deploy.yml, base /Jaime-paginaweb). Pendiente: activar Pages en Settings > Pages > Source: GitHub Actions.

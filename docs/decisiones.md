@@ -101,3 +101,8 @@ Por qué elegí X y no Y (colores, estructura, herramientas).
 ## 2026-10-28 — Alineación y puntuación en servicios
 **Elegí:** la frase "Casas, locales y fincas…" con el mismo borde interno que el texto del recuadro de experiencia, y punto final en cada descripción de la hoja de servicios, en la nota de debajo del título y en las dos líneas finales.
 **Por qué:** pedido del cliente. Las descripciones son frases y se leen mejor con su punto; los títulos de cada servicio y de cada grupo siguen sin punto, como títulos.
+
+## 2026-10-28 — Publicar en GitHub Pages
+**Elegí:** GitHub Pages, con una GitHub Action que compila y publica la página en cada push a `main`. Dirección: https://droa0602.github.io/Jaime-paginaweb/
+**En vez de:** Netlify, Vercel o Cloudflare Pages.
+**Por qué:** el código ya está en GitHub y no hace falta crear otra cuenta. Como la página vive en una subcarpeta (`/Jaime-paginaweb/`), `astro.config.mjs` tiene `base`, y los enlaces a archivos de `public/` usan ese prefijo. Si después se compra un dominio propio, se puede apuntar a GitHub Pages y quitar el `base`.
