@@ -15,12 +15,14 @@ const { title, description } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#16130f" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="preload" href="/fonts/barlow-400-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/barlow-condensed-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/zilla-slab-600-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/zilla-slab-400-latin.woff2" as="font" type="font/woff2" crossorigin />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <script is:inline>document.documentElement.classList.add('js')</script>
   </head>
   <body>
     <slot />

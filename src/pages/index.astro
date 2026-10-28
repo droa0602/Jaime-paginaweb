@@ -1,179 +1,377 @@
 ---
+import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
+import amanecer from '../assets/fotos/amanecer-villanueva-2026.jpg';
 
-const phone = '+57 311 239 1524';
+const phone = '311 239 1524';
 const tel = 'tel:+573112391524';
 const whatsapp = 'https://wa.me/573112391524';
 
-const stats = [
-  { value: '30', label: 'años' },
-  { value: '24 h', label: 'urgencias' },
-  { value: 'Sí', label: 'garantía' },
+const services = [
+  {
+    group: 'Daños y urgencias',
+    note: 'Las 24 horas',
+    items: [
+      { title: 'Cortos', detail: 'Busco dónde está la falla y la arreglo.' },
+      { title: 'Apagones', detail: 'Cuando se va la luz en toda la casa o en una parte.' },
+      { title: 'Breakers que saltan', detail: 'Encuentro qué lo está disparando.' },
+    ],
+  },
+  {
+    group: 'Tomas, interruptores y luces',
+    items: [
+      { title: 'Tomas e interruptores', detail: 'Cambio los dañados y pongo nuevos.' },
+      { title: 'Lámparas', detail: 'Instalo y reviso.' },
+      { title: 'Ventiladores de techo', detail: 'Instalo y reviso.' },
+    ],
+  },
+  {
+    group: 'Instalaciones nuevas',
+    items: [
+      { title: 'Casas', detail: 'La instalación completa, del tablero a la última toma.' },
+      { title: 'Locales', detail: 'Luces, tomas y circuitos para el negocio.' },
+      { title: 'Fincas', detail: 'En Villanueva y las veredas cercanas.' },
+    ],
+  },
+  {
+    group: 'Revisión de la casa',
+    items: [
+      { title: 'Para evitar incendios', detail: 'Cables viejos, empalmes y tomas recalentadas.' },
+      { title: 'Por cobros altos de luz', detail: 'Busco por dónde se está yendo la energía.' },
+    ],
+  },
 ];
 
-const services = [
-  { title: 'Instalaciones nuevas', detail: 'Casas, locales y fincas' },
-  { title: 'Arreglo de daños', detail: 'Cortos, apagones, breakers que saltan' },
-  { title: 'Tomas e interruptores', detail: 'Cambio y puesta de nuevos' },
-  { title: 'Lámparas y ventiladores', detail: 'Instalo y reviso' },
-  { title: 'Revisión de la casa', detail: 'Para evitar incendios y cobros altos de luz' },
-];
+const years = 30;
+const facts = ['De lunes a domingo', 'Trabajo con garantía'];
+
+const credit = {
+  title: 'Amanecer Villanueva 2026',
+  creator: 'SergioBernalO',
+  license: 'CC BY-SA 4.0',
+  licenseUrl: 'https://creativecommons.org/licenses/by-sa/4.0',
+  page: 'https://commons.wikimedia.org/wiki/File:Amanecer_Villanueva_2026.jpg',
+};
+
+const waIcon = 'M7.9 20A9 9 0 1 0 4 16.1L2 22Z';
 ---
 
 <Base
   title="Jaime Bohórquez — Electricista en Villanueva, Casanare"
-  description={`Electricista de confianza a domicilio en Villanueva, Casanare. Urgencias 24 horas. ${phone}`}
+  description={`Electricista a domicilio en Villanueva, Casanare, con 30 años de oficio. Urgencias las 24 horas. ${phone}`}
 >
-  <div class="page">
-    <main>
-      <header class="hero">
-        <div class="hero-kicker">Electricista · Villanueva, Casanare</div>
-        <h1>Jaime<br />Bohórquez</h1>
-        <p>Electricista de confianza a domicilio: Llámeme y voy hasta su puerta.</p>
-      </header>
-
-      <section class="section photo-section">
-        <div class="blueprint duotone photo">
-          <!-- TODO: reemplazar por la foto real de Jaime (public/ o src/assets/) -->
-          <span class="photo-placeholder">Foto de Jaime con su herramienta</span>
-          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="kicker">Quién soy</div>
-        <p class="lead">Electricista de Villanueva con 30 años de trabajo. Me conocen en el barrio por cumplir la hora y dejar todo limpio.</p>
-        <div class="stats">
-          {stats.map((s) => (
-            <div class="stat">
-              <div class="stat-value">{s.value}</div>
-              <div class="stat-label">{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section class="section section-lg">
-        <div class="kicker">Servicios</div>
-        <ul class="blueprint services">
-          {services.map((s) => (
-            <li>
-              <span class="service-title">{s.title}</span>
-              <span class="service-detail">{s.detail}</span>
-            </li>
-          ))}
-          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+  <main>
+    <!-- Portada: la calcomanía con el teléfono que queda pegada en la tapa del tablero -->
+    <header class="hero">
+      <Image
+        class="hero-photo"
+        src={amanecer}
+        widths={[640, 1024, 1600, 1920]}
+        sizes="100vw"
+        loading="eager"
+        fetchpriority="high"
+        alt="Amanecer en Villanueva: un potrero, un árbol grande y las luces de la calle todavía prendidas"
+      />
+      <div class="sticker">
+        <h1 class="lines">
+          <span class="line"><span data-line style="--i:0">Electricista</span></span>
+          <span class="line"><span data-line style="--i:1">en Villanueva</span></span>
+        </h1>
+        <ul class="facts" data-load style="--d:420ms">
+          <li>A domicilio, en el pueblo y en las veredas</li>
+          <li>Urgencias las 24 horas</li>
+          <li>30 años de oficio</li>
         </ul>
-      </section>
+        <p class="hero-lead" data-load style="--d:480ms">Llámeme y voy hasta su puerta.</p>
+        <div class="sticker-foot" data-load style="--d:540ms">
+          <a class="btn btn-ink" href={whatsapp} target="_blank" rel="noopener">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={waIcon}></path></svg>
+            Escribir por WhatsApp
+          </a>
+          <a class="sticker-tel" href={tel}>Llamar al <span class="nowrap">{phone}</span></a>
+        </div>
+        <p class="sticker-credit" data-load style="--d:600ms">
+          <span>Jaime Bohórquez</span>
+          <span>Villanueva, Casanare</span>
+        </p>
+      </div>
+    </header>
 
-      <section class="section section-lg contact">
-        <div class="kicker">Contacto</div>
-        <div class="contact-phone"><a href={tel}>{phone}</a></div>
-        <a class="btn btn-secondary call" href={tel}>Llamar ahora</a>
-        <p>Villanueva y veredas cercanas.<br />Urgencias las 24 horas.</p>
-      </section>
-    </main>
+    <!-- Servicios: el directorio de circuitos que va en la tapa del tablero -->
+    <section class="services" aria-labelledby="servicios">
+      <div class="services-side">
+        <div class="stub" data-reveal>
+          <p class="stub-years">
+            <span class="stub-number">{years}</span>
+            <span class="stub-years-label">años<br />de oficio</span>
+          </p>
+          <ul class="stub-facts">
+            {facts.map((f) => <li>{f}</li>)}
+          </ul>
+        </div>
+        <p class="services-statement" data-reveal style="--i:1">Casas, locales y fincas. Usted me cuenta qué pasó y yo busco la falla.</p>
+      </div>
 
-    <div class="sticky-cta">
-      <a class="btn btn-primary blueprint" href={whatsapp} target="_blank" rel="noopener">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path></svg>
-        Escribirle a Jaime por WhatsApp
-        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
-      </a>
-    </div>
+      <div class="sheet" data-reveal style="--i:1">
+        <h2 id="servicios">Servicios</h2>
+        <p class="sheet-note">Lo que arreglo y lo que instalo.</p>
+        {services.map((s) => (
+          <div class="sheet-group">
+            <h3>{s.group}{s.note && <span class="sheet-group-note"> · {s.note}</span>}</h3>
+            <ul>
+              {s.items.map((item) => (
+                <li>
+                  <span class="item-title">{item.title}</span>
+                  <span class="item-detail">{item.detail}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+        <p class="sheet-end">Urgencias las 24 horas.<br />Villanueva y veredas cercanas.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>
+      Foto de la portada: <a href={credit.page}>“{credit.title}”</a>, {credit.creator}, <a href={credit.licenseUrl}>{credit.license}</a>, vía Wikimedia Commons.
+      © {new Date().getFullYear()} Jaime Bohórquez.
+    </p>
+  </footer>
+
+  <div class="sticky-cta" data-sticky-cta>
+    <a class="btn btn-cta" href={whatsapp} target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={waIcon}></path></svg>
+      Escribirle a Jaime por WhatsApp
+    </a>
   </div>
 </Base>
 
-<style>
-  .page {
-    max-width: 480px;
-    margin: 0 auto;
-    min-height: 100vh;
-    background: var(--color-bg);
-    display: flex;
-    flex-direction: column;
-  }
-  main { flex: 1; }
+<script>
+  // Entrances: each part of a section rises once as it comes into view
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 
-  .hero {
-    background: var(--color-accent-900);
-    color: var(--color-bg);
-    padding: 28px 20px;
+  // The floating WhatsApp button steps aside while the hero card, with its own WhatsApp button, is on screen
+  const cta = document.querySelector<HTMLElement>('[data-sticky-cta]');
+  const sticker = document.querySelector('.sticker');
+  if (cta && sticker) {
+    new IntersectionObserver(([e]) => cta.classList.toggle('is-hidden', e.isIntersecting), { threshold: 0.2 }).observe(sticker);
   }
-  .hero-kicker {
-    font-size: 14px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+</script>
+
+<style>
+  /* ——— Portada ——— */
+  .hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+    padding: 48px var(--margin);
+    overflow: clip;
+    background: var(--color-ink);
+  }
+  .hero-photo {
+    position: absolute;
+    inset: -8% 0 0;
+    width: 100%;
+    height: 108%;
+    object-fit: cover;
+    filter: grayscale(1) brightness(0.55);
+  }
+  .sticker {
+    position: relative;
+    width: min(100%, 860px);
+    padding: clamp(24px, 3.4vw, 48px);
+    background: var(--color-panel);
+  }
+  .sticker-credit {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px 16px;
+    flex-wrap: wrap;
+    margin-top: clamp(24px, 3vw, 40px);
+    font-size: var(--step-small);
     font-weight: 600;
   }
   .hero h1 {
-    margin: 14px 0 0;
-    font-size: 64px;
+    font-size: var(--step-display);
     line-height: 0.95;
-    text-transform: uppercase;
   }
-  .hero p { margin: 16px 0 0; font-size: 19px; line-height: 1.4; }
+  .lines .line { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+  .lines [data-line] { display: block; }
+  .facts {
+    margin-top: clamp(24px, 3vw, 40px);
+    font-size: var(--step-lead);
+    line-height: 1.2;
+  }
+  .hero-lead {
+    margin-top: 16px;
+    font-size: var(--step-lead);
+    font-style: italic;
+    line-height: 1.2;
+  }
+  .sticker-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    margin-top: clamp(32px, 4vw, 48px);
+  }
+  .sticker-foot .btn { flex: 1 1 280px; max-width: 420px; }
+  .sticker-tel { font-size: var(--step-body); font-weight: 600; }
 
-  .section { padding: 32px 20px 0; }
-  .section-lg { padding-top: 36px; }
-  .photo-section { padding-top: 28px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .js .hero [data-line] { transform: translateY(105%); animation: load-line 800ms var(--ease-expo) forwards; animation-delay: calc(120ms + var(--i) * 90ms); }
+    .js .hero [data-load] { opacity: 0; transform: translateY(12px); animation: load-rise 500ms var(--ease-out) forwards; animation-delay: var(--d); }
+    .js .sticker { animation: stick 700ms var(--ease-expo) both; }
+    .js .hero-photo { animation: settle 1400ms var(--ease-soft) both; }
+  }
+  @keyframes load-line { to { transform: none; } }
+  @keyframes load-rise { to { opacity: 1; transform: none; } }
+  @keyframes stick { from { opacity: 0; scale: 1.04; } }
+  @keyframes settle { from { scale: 1.08; } }
 
-  .photo {
-    height: 220px;
+  /* As the hero leaves, the photo drifts down a little */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .js .hero-photo { animation: settle 1400ms var(--ease-soft) both, drift linear both; animation-timeline: auto, view(); animation-range: normal, exit 0% exit 100%; }
+      @keyframes drift { to { translate: 0 8%; } }
+    }
+  }
+
+  /* ——— Servicios ——— */
+  .services {
+    padding: var(--section) var(--margin);
+    background: var(--color-ink);
+    color: var(--color-text);
     display: grid;
-    place-items: center;
-    background: var(--color-neutral-200);
+    gap: 48px;
   }
-  .photo-placeholder { color: var(--color-accent-700); font-size: 14px; }
-
-  .lead { margin: 12px 0 0; font-size: 19px; line-height: 1.45; }
-
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    border: 1px solid var(--color-divider);
-    margin-top: 18px;
+  /* The box and the sentence under it share one inner edge */
+  .services-side { --stub-pad: 24px; }
+  /* Experience box: one large figure, then the two plain facts */
+  .stub {
+    padding: 32px var(--stub-pad);
+    background: var(--color-panel);
+    color: var(--color-text);
   }
-  .stat { padding: 12px; text-align: center; }
-  .stat + .stat { border-left: 1px solid var(--color-divider); }
-  .stat-value {
-    font-family: var(--font-heading);
+  .stub-years {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .stub-number {
+    font-size: var(--step-display);
     font-weight: 600;
-    font-size: 30px;
-    line-height: 1;
+    line-height: 0.85;
+    letter-spacing: -0.04em;
   }
-  .stat-label { font-size: 14px; }
-
-  .services { list-style: none; margin: 14px 0 0; padding: 0; }
-  .services li { padding: 14px 16px; border-top: 1px solid var(--color-divider); }
-  .service-title {
-    display: block;
-    font-family: var(--font-heading);
+  .stub-years-label {
+    font-size: var(--step-lead);
     font-weight: 600;
-    font-size: 22px;
-    text-transform: uppercase;
     line-height: 1.1;
   }
-  .service-detail { display: block; font-size: 16px; margin-top: 2px; }
-
-  .contact { padding-bottom: 40px; }
-  .contact-phone {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 1;
-    margin-top: 12px;
+  .stub-facts {
+    display: grid;
+    gap: 6px;
+    margin-top: 28px;
+    font-size: var(--step-lead);
+    line-height: 1.25;
   }
-  .contact-phone a { color: inherit; text-decoration: none; }
-  .call { min-height: 56px; font-size: 19px; margin-top: 14px; }
-  .contact p { margin: 16px 0 0; font-size: 17px; line-height: 1.5; }
+  .services-statement {
+    padding-inline: var(--stub-pad);
+    margin-top: 32px;
+    font-size: var(--step-lead);
+    line-height: 1.25;
+    max-width: calc(26ch + var(--stub-pad) * 2);
+    text-wrap: pretty;
+  }
 
+  .sheet {
+    position: relative;
+    background: var(--color-panel);
+    color: var(--color-text);
+    padding: 40px 24px;
+  }
+  /* Everything left-aligned, in one column centred in the panel */
+  .sheet > * { max-width: 36rem; margin-inline: auto; }
+  .sheet h2 { font-size: var(--step-head); }
+  .sheet .sheet-note { margin-top: 12px; }
+  .sheet .sheet-group { margin-top: 48px; }
+  .sheet-group h3 { font-size: var(--step-lead); line-height: 1.15; }
+  .sheet-group-note { font-weight: 400; }
+  .sheet-group ul { margin-top: 20px; display: grid; gap: 16px; }
+  .item-title { display: block; font-weight: 600; }
+  .item-detail { display: block; color: var(--color-text-soft); }
+  .sheet .sheet-end { margin-top: 48px; font-weight: 600; }
+
+  /* ——— Pie: solo el crédito de la foto ——— */
+  .footer {
+    padding: 0 var(--margin) 48px;
+    background: var(--color-ink);
+    color: var(--color-text);
+  }
+  .footer p { max-width: 60ch; }
+
+  /* ——— WhatsApp siempre a mano ——— */
   .sticky-cta {
     position: sticky;
     bottom: 0;
-    padding: 12px 20px 18px;
-    background: var(--color-bg);
-    border-top: 1px solid var(--color-divider);
+    z-index: 10;
+    padding: 12px var(--margin) 16px;
+    background: var(--color-panel);
+    transition: opacity var(--t-hover) ease, transform 400ms var(--ease-out), visibility 0s;
   }
-  .sticky-cta .btn { min-height: 60px; font-size: 20px; gap: 10px; }
+  .sticky-cta .btn { width: 100%; min-height: 60px; }
+  .sticky-cta.is-hidden { opacity: 0; transform: translateY(24px); visibility: hidden; transition-delay: 0s, 0s, 400ms; }
+  .nowrap { white-space: nowrap; }
+
+  /* ——— Tablet: the box runs full width, so the figure and the facts sit side by side ——— */
+  @media (min-width: 600px) {
+    .services-side { --stub-pad: 40px; }
+  }
+  @media (min-width: 600px) and (max-width: 899px) {
+    .stub {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 40px var(--stub-pad);
+    }
+    .stub-facts { margin-top: 0; }
+  }
+
+  /* ——— Computador ——— */
+  @media (min-width: 900px) {
+    .sticker { width: min(64%, 900px); }
+
+    .services {
+      grid-template-columns: 5fr 7fr;
+      gap: clamp(48px, 6vw, 112px);
+      align-items: start;
+    }
+    /* Pinned story: the stub stays while the directory scrolls past */
+    .services-side { position: sticky; top: 12vh; }
+    .stub { padding-block: 40px; }
+    .sheet { padding: 64px clamp(40px, 5vw, 72px); }
+
+    .sticky-cta {
+      position: fixed;
+      right: var(--margin);
+      bottom: 32px;
+      padding: 0;
+      background: none;
+    }
+    .sticky-cta .btn {
+      width: auto;
+      padding-inline: 28px;
+      /* The dark blue ring keeps the button apart from whatever it floats over */
+      outline: 3px solid var(--color-panel);
+    }
+  }
 </style>
